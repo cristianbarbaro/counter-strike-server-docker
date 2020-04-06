@@ -1,0 +1,12 @@
+version: "3"
+services:
+  cs-server:
+    build: .
+    restart: unless-stopped
+    container_name: cs-server
+    ports:
+      - 27015:27015/udp
+      - 27015:27015
+    #volumes: 
+    #  - "./dataserver/:/home/linuxgsm/serverfiles/csstrike/"
+    command: /bin/sh -c "bash csserver update && bash csserver start && tail -F /home/linuxgsm/log/console/csserver-console.log"
