@@ -6,9 +6,9 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Server configuration
 COPY confs/maps/* /home/linuxgsm/serverfiles/cstrike/maps/
-# Maps configuration
 # https://github.com/GameServerManagers/Game-Server-Configs
 COPY confs/server.cfg /home/linuxgsm/serverfiles/cstrike/csserver.cfg
+# Custom maps
 COPY confs/mapcycle.txt /home/linuxgsm/serverfiles/cstrike/mapcycle.txt
 
 RUN apt-get update && \
@@ -42,7 +42,7 @@ RUN apt-get update && \
     usermod -G tty linuxgsm && \
     # Set permissions linuxgsm user in files
     chmod +x /linuxgsm.sh && \
-	cp /linuxgsm.sh /home/linuxgsm/linuxgsm.sh && \
+    cp /linuxgsm.sh /home/linuxgsm/linuxgsm.sh && \
     chown -R linuxgsm:linuxgsm /home/linuxgsm
 
 # Set user and workdir linuxgsm environment.
